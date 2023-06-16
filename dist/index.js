@@ -25,11 +25,11 @@ class GitHubService {
     }
     getPullRequestTitle(repositoryOwner, repositoryName, pullRequestNumber) {
         return __awaiter(this, void 0, void 0, function* () {
-            const pull = yield this.octokit.paginate(this.octokit.rest.pulls.get, {
+            const pull = (yield this.octokit.rest.pulls.get({
                 owner: repositoryOwner,
                 repo: repositoryName,
                 pull_number: pullRequestNumber
-            });
+            })).data;
             (0, core_1.debug)(`Pull request ${pullRequestNumber} includes the following body: ${JSON.stringify(pull)}`);
             return pull.title;
         });

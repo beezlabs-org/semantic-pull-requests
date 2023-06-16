@@ -13,11 +13,13 @@ export class GitHubService {
     repositoryName: string,
     pullRequestNumber: number
   ): Promise<string> {
-    const pull = await this.octokit.paginate(this.octokit.rest.pulls.get, {
-      owner: repositoryOwner,
-      repo: repositoryName,
-      pull_number: pullRequestNumber
-    })
+    const pull = (
+      await this.octokit.rest.pulls.get({
+        owner: repositoryOwner,
+        repo: repositoryName,
+        pull_number: pullRequestNumber
+      })
+    ).data
 
     debug(`Pull request ${pullRequestNumber} includes the following body: ${JSON.stringify(pull)}`)
 
