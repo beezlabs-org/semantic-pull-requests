@@ -5,7 +5,7 @@
   "description": "Check pull request titles and commit messages to check conventional commit standards",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --newLine LF",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
