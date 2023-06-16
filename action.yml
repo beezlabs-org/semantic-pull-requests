@@ -2,6 +2,9 @@ name: Check semantic PR
 description: Check pull request titles and commit messages to check conventional commit standards
 author: Beez Innovation Labs
 inputs:
+  titleCommits:
+    required: true
+    description: 'Denote whether to consider only PR title or only commit messages or both. Possible values: title, commit, both'
   token:
     required: true
     description: Token to access the repository
