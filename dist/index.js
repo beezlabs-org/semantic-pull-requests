@@ -62,12 +62,14 @@ exports.validateCommitMessages = exports.validatePrTitle = void 0;
 const conventional_commits_parser_1 = __nccwpck_require__(1655);
 const core_1 = __nccwpck_require__(2186);
 function validatePrTitle(title) {
+    (0, core_1.debug)(`Validating title: '${title}'`);
     const result = (0, conventional_commits_parser_1.sync)(title);
     isSemantic(result, title);
 }
 exports.validatePrTitle = validatePrTitle;
 function validateCommitMessages(commitMessages) {
     for (const commitMessage of commitMessages) {
+        (0, core_1.debug)(`Validating title: '${commitMessage}'`);
         const result = (0, conventional_commits_parser_1.sync)(commitMessage);
         const valid = isSemantic(result, commitMessage);
         if (!valid) {

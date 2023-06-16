@@ -1,7 +1,8 @@
 import {Commit, sync as parse} from 'conventional-commits-parser'
-import {setFailed} from '@actions/core'
+import {debug, setFailed} from '@actions/core'
 
 export function validatePrTitle(title: string): void {
+  debug(`Validating title: '${title}'`)
   const result = parse(title)
 
   isSemantic(result, title)
@@ -9,6 +10,7 @@ export function validatePrTitle(title: string): void {
 
 export function validateCommitMessages(commitMessages: string[]): void {
   for (const commitMessage of commitMessages) {
+    debug(`Validating title: '${commitMessage}'`)
     const result = parse(commitMessage)
 
     const valid = isSemantic(result, commitMessage)
